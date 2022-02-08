@@ -1,0 +1,19 @@
+docker create \
+  --name=dokuwiki \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=America/New_York \
+  -e APP_URL=[YOURURL] `#optional` \
+  -p 8081:80 \
+  -v dokuwiki:/config \
+  --restart unless-stopped \
+  linuxserver/dokuwiki
+  
+  
+#--name=dokuwiki	Names the container “dokuwiki”.
+# -e PUID=1000	Sets Process User ID to 1000 to help avoid permission issues.
+# -e PGID=1000	Sets Process Group ID to 1000 to help avoid permission issues.
+# -e TZ=[YOURTZ]	Change your time zone with the correct time zone from the TZ Database.
+# -e APPURL=[YOURURL]	The IP address or URL that you will use to connect to your server. This is useful if you are running the container behind a reverse proxy.
+# -p 8081:80/udp	Exposes port 8081 on the host and maps it to port 80 on the container to connect to DokuWiki in the Browser. You can also use port 443 for SSL.
+# linuxserver/dokuwiki	The image that is used for this container from the Docker Hub.  (https://hub.docker.com/r/linuxserver/dokuwiki)
